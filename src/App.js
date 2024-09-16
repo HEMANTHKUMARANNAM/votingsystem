@@ -11,7 +11,7 @@ const clientId = '233961795977-hhankdead218f4e3usngm999i4jikvva.apps.googleuserc
 function App() {
   return (
     <GoogleOAuthProvider clientId={clientId}>
-      <Router>
+      <Router basename='/votingsystem' >
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />

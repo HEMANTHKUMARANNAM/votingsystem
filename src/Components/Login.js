@@ -15,13 +15,8 @@ const Login = () => {
       const decoded = jwtDecode(credential); // Correct usage
       const email = decoded.email;
 
-      // Check if email ends with "@klu.ac.in"
-      if (email.endsWith('@klu.ac.in')) {
-        console.log('Login Success:', email);
-        // Navigate to home and pass the email
-        navigate('/profile', { state: { email } });
-      } 
-      else if(email==='hemanthkumar312004@gmail.com')
+      
+      if(email==='shaikmudassir2004@gmail.com' || email === 'hemanthkumar312004@gmail.com')
       {
 
         console.log('Login Success:', email);
@@ -30,7 +25,9 @@ const Login = () => {
 
       }
       else {
-        setError('You must use an @klu.ac.in email to login.');
+        console.log('Login Success:', email);
+        // Navigate to home and pass the email
+        navigate('/profile', { state: { email } });
       }
     } catch (error) {
       console.error('Error decoding token:', error);
