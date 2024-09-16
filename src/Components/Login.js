@@ -26,7 +26,7 @@ const Login = () => {
 
         console.log('Login Success:', email);
         // Navigate to home and pass the email
-        navigate('/ad', { state: { email } });
+        navigate('/admin-dashboard', { state: { email } });
 
       }
       else {

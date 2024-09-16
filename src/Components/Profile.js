@@ -67,51 +67,69 @@ const Profile = () => {
     const dbRef = ref(db, `votingdata/${email.substring(0, 11)}/selectedOption`);
 
     try {
-      // Data does not exist, proceed with submission
       await set(dbRef, selectedOption);
-      console.log('Data successfully written to Firebase');
       setMessage('Vote submitted successfully');
-      // Redirect to home page after successful submission
-      navigate('/home');
+      navigate('/login');
     } catch (error) {
       console.error('Error writing data to Firebase:', error);
     }
   };
 
   return (
-    <div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
-          checked={selectedOption === 'flexRadioDefault1'}
-          onChange={handleChange}
+    <div className="container mt-5">
+      <div className="card shadow p-4">
+        <h2 className="text-center mb-4">Vote for Your Candidate</h2>
+        <div className="form-check mb-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+            checked={selectedOption === 'flexRadioDefault1'}
+            onChange={handleChange}
+            disabled={isVotingDisabled}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault1">
+            Vishnu
+          </label>
+        </div>
+        <div className="form-check mb-3">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault3"
+            checked={selectedOption === 'flexRadioDefault3'}
+            onChange={handleChange}
+            disabled={isVotingDisabled}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault3">
+            Ravi
+          </label>
+        </div>
+        <div className="form-check mb-4">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            checked={selectedOption === 'flexRadioDefault2'}
+            onChange={handleChange}
+            disabled={isVotingDisabled}
+          />
+          <label className="form-check-label" htmlFor="flexRadioDefault2">
+            Nota
+          </label>
+        </div>
+        <button
+          className="btn btn-primary btn-block"
+          onClick={handleSubmit}
           disabled={isVotingDisabled}
-        />
-        <label className="form-check-label" htmlFor="flexRadioDefault1">
-          Option 1
-        </label>
+        >
+          Submit
+        </button>
+        {message && <div className="alert alert-info mt-4">{message}</div>}
       </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          checked={selectedOption === 'flexRadioDefault2'}
-          onChange={handleChange}
-          disabled={isVotingDisabled}
-        />
-        <label className="form-check-label" htmlFor="flexRadioDefault2">
-          Option 2
-        </label>
-      </div>
-      <button className="btn btn-primary mt-3" onClick={handleSubmit} disabled={isVotingDisabled}>
-        Submit
-      </button>
-      {message && <div className="alert alert-info mt-3">{message}</div>}
     </div>
   );
 };
