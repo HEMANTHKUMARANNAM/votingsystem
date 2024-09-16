@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className="Login">
-      <h1 className='maintitle'>KALASALINGAM UNIVERSITY</h1>
+      <h1 className='maintitle'>VOTING SYSTEM</h1>
       <h2 className='title'>Login with Google</h2>
     
       <GoogleLogin
